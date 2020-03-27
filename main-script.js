@@ -56,11 +56,20 @@ $("#page-content").load("home.html");
       }
     // Events
     $(".aboutme-page").click(function(){
-        window.location.href = "aboutme.html";
+        $("#page-content").load("aboutme.html");
+        
+        $("#night-img" ).animate({
+            opacity: 1.00,
+            left: "0%",
+        }, 2000);
+
+        $( "#aboutme-text" ).animate({
+            opacity: 1.00,
+        }, 2500);
     });
 
     $(".home-page").click(function(){
-        window.location.href = "index.html";
+        $("#page-content").load("home.html");
     });
 
     $(".contact-page").click(function(){
@@ -92,6 +101,6 @@ $("#page-content").load("home.html");
     opt.width = 100;
     var clock = new AnalogClock("clock", opt);
    $("#clock").draggable();
-
+   
 
 });
