@@ -1,13 +1,15 @@
 $(document).ready(function() {
 $("#page-content").load("home.html");
+var timeout1;
+var timeout2;
 
     var showTextLetterByLetter = function (target, message, index, interval) {   
         if (index < message.length) {
             $(target).append("_");
-            setTimeout(function() {
+             timeout1 = setTimeout(function() {
                 $(target).text($(target).text().substring(0,($(target).text().length - 1)));
                 $(target).append(message[index++]);
-                setTimeout(function () { 
+                timeout2 = setTimeout(function () { 
                     showTextLetterByLetter(target, message, index, interval); }, interval);
             }, 25)
         }
@@ -55,9 +57,24 @@ $("#page-content").load("home.html");
         return i;
       }
     // Events
+    function loadPage(destination, page, callback)
+    {
+        if (timeout1)
+            clearTimeout(timeout1);
+        if (timeout2)
+            clearTimeout(timeout2);
+            
+        $.ajax({
+            url: page + ".html",
+            method: "GET",
+            success: function(html){
+                $(destination).html(html);
+                callback();
+            }
+    });
+}
     $(".aboutme-page").click(function(){
-        $("#page-content").load("aboutme.html");
-        
+       loadPage("#page-content", "aboutme", function() {
         $("#night-img" ).animate({
             opacity: 1.00,
             left: "0%",
@@ -66,10 +83,13 @@ $("#page-content").load("home.html");
         $( "#aboutme-text" ).animate({
             opacity: 1.00,
         }, 2500);
+       });
+      
     });
 
     $(".home-page").click(function(){
-        $("#page-content").load("home.html");
+        loadPage("#page-content", "home", function() {
+        showTextLetterByLetter("#index-text", $("#index-dummy-text").text(), 0, 1)});
     });
 
     $(".contact-page").click(function(){
