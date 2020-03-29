@@ -100,21 +100,37 @@ var timeout2;
         window.location.href = "projects.html";
     });
 
-    $("#enable-night").click(function() {
+    function enableNightMode(addSessionStorage)
+    {
         $(".container-fluid").addClass("black-background");
         $(".container-fluid").addClass("text-white");
         $(".header").removeClass("lightgrey-bg");
         $(".black-border").addClass("white-border").removeClass("black-border");
-        $(".bottom-border").addClass("bottom-border-white").removeClass("bottom-border")
-    });
-                
-    $("#disable-night").click(function() {
+        $(".bottom-border").addClass("bottom-border-white").removeClass("bottom-border");
+        if (addSessionStorage)
+            localStorage.setItem("nightmode", "true");
+    }
+
+    function disableNightMode(removeSessionStorage)
+    {
         $(".container-fluid").removeClass("black-background");
         $(".container-fluid").removeClass("text-white");
         $(".header").addClass("lightgrey-bg");
         $(".white-border").addClass("black-border").removeClass("white-border");
         $(".bottom-border-white").addClass("bottom-border").removeClass("bottom-border-white");
+        if (removeSessionStorage)
+            localStorage.removeItem("nightmode");
+    }
+    $("#enable-night").click(function() {
+        enableNightMode(true);
     });
+                
+    $("#disable-night").click(function() {
+        disableNightMode(true);
+    });
+
+    if (localStorage.getItem("nightmode") != null)
+        enableNightMode(false);
 
 // Clock
     var opt = new AnalogClockOption(); 
