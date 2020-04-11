@@ -1,5 +1,5 @@
 $(document).ready(function() {
-$("#page-content").load("home.html");
+loadPage("#page-content", "home", mainPageTextAnimation);
 var timeout1;
 var timeout2;
 
@@ -57,17 +57,17 @@ var timeout2;
         return i;
       }
 
-      function mainPageTextAnimation() 
-      {
-        $("#avatar" ).animate({
-            opacity: 1.00,
-            left: "0%",
-        }, 2000);
+    function mainPageTextAnimation() {
+        console.log('here');
+    $("#avatar" ).animate({
+        opacity: 1.00,
+        left: "0%",
+    }, 2000);
 
-        $( "#index-text" ).animate({
-            opacity: 1.00,
-        }, 2500);
-      }
+    $( "#index-text" ).animate({
+        opacity: 1.00,
+    }, 2500);
+    }
 
     // Events
     function loadPage(destination, page, callback)
