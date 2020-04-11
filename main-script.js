@@ -3,31 +3,31 @@ $("#page-content").load("home.html");
 var timeout1;
 var timeout2;
 
-    var showTextLetterByLetter = function (target, message, index, interval) {   
-        if (index < message.length) {
-            $(target).append("_");
-             timeout1 = setTimeout(function() {
-                $(target).text($(target).text().substring(0,($(target).text().length - 1)));
-                $(target).append(message[index++]);
-                timeout2 = setTimeout(function () { 
-                    showTextLetterByLetter(target, message, index, interval); }, interval);
-            }, 25)
-        }
-        else
-            makeUnderscoreFlashing(target);
-    }
+    // var showTextLetterByLetter = function (target, message, index, interval) {   
+    //     if (index < message.length) {
+    //         $(target).append("_");
+    //          timeout1 = setTimeout(function() {
+    //             $(target).text($(target).text().substring(0,($(target).text().length - 1)));
+    //             $(target).append(message[index++]);
+    //             timeout2 = setTimeout(function () { 
+    //                 showTextLetterByLetter(target, message, index, interval); }, interval);
+    //         }, 25)
+    //     }
+    //     else
+    //         makeUnderscoreFlashing(target);
+    // }
 
-    function makeUnderscoreFlashing(target) {
-        target = $(target);
-        setInterval(function(){
-            $(target).append("_");
-            setTimeout(function () { 
-                $(target).text($(target).text().substring(0,($(target).text().length - 1)));
+    // function makeUnderscoreFlashing(target) {
+    //     target = $(target);
+    //     setInterval(function(){
+    //         $(target).append("_");
+    //         setTimeout(function () { 
+    //             $(target).text($(target).text().substring(0,($(target).text().length - 1)));
 
-        }, 200)},300);
-    }
+    //     }, 200)},300);
+    // }
     
-    showTextLetterByLetter("#index-text", $("#index-dummy-text").text(), 0, 1);
+    // showTextLetterByLetter("#index-text", $("#index-dummy-text").text(), 0, 1);
 
     var currentdate = new Date(); 
     var datetime = {};
@@ -56,6 +56,19 @@ var timeout2;
         }
         return i;
       }
+
+      function mainPageTextAnimation() 
+      {
+        $("#avatar" ).animate({
+            opacity: 1.00,
+            left: "0%",
+        }, 2000);
+
+        $( "#index-text" ).animate({
+            opacity: 1.00,
+        }, 2500);
+      }
+
     // Events
     function loadPage(destination, page, callback)
     {
@@ -89,7 +102,8 @@ var timeout2;
 
     $(".home-page").click(function(){
         loadPage("#page-content", "home", function() {
-        showTextLetterByLetter("#index-text", $("#index-dummy-text").text(), 0, 1)});
+        mainPageTextAnimation();
+       });    
     });
 
     $(".contact-page").click(function(){
