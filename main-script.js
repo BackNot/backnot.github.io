@@ -61,7 +61,7 @@ var timeout2;
         console.log('here');
     $("#avatar" ).animate({
         opacity: 1.00,
-        left: "0%",
+        left: "50%",
     }, 2000);
 
     $( "#index-text" ).animate({
