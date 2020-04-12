@@ -5,7 +5,7 @@ loadPage("#page-content", "home", mainPageTextAnimation);
         console.log('here');
         $("#avatar" ).animate({
             opacity: 1.00,
-            left: "50%",
+            left: "30%",
         }, 2000);
 
         $( "#index-text" ).animate({
@@ -18,6 +18,17 @@ loadPage("#page-content", "home", mainPageTextAnimation);
             }, 1500);
         }, 1500);
 
+    }
+
+    function aboutmePageTextAnimation() {
+        $("#night-img" ).animate({
+            opacity: 1.00,
+            left: "0%",
+        }, 2000);
+
+        $( "#aboutme-text" ).animate({
+            opacity: 1.00,
+        }, 2500);
     }
 
     // Events
@@ -33,17 +44,7 @@ loadPage("#page-content", "home", mainPageTextAnimation);
     });
 }
     $(".aboutme-page").click(function(){
-       loadPage("#page-content", "aboutme", function() {
-        $("#night-img" ).animate({
-            opacity: 1.00,
-            left: "0%",
-        }, 2000);
-
-        $( "#aboutme-text" ).animate({
-            opacity: 1.00,
-        }, 2500);
-       });
-      
+       loadPage("#page-content", "aboutme", aboutmePageTextAnimation);
     });
 
     $(".home-page").click(function(){
