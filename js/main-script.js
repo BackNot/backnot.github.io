@@ -1,5 +1,5 @@
 $(document).ready(function() {
-loadPage("#page-content", "home", mainPageTextAnimation);
+    loadPage("#page-content", "home", mainPageTextAnimation);
 
     function mainPageTextAnimation() {
         console.log('here');
@@ -31,6 +31,27 @@ loadPage("#page-content", "home", mainPageTextAnimation);
         }, 2500);
     }
 
+    function contactPageTextAnimation() {
+        $("#contact-text").animate({
+            opacity: 1.00
+        }, 1500);
+    }
+
+    function projectsPageTextAnimation() {
+        $( "#projects-text" ).animate({
+            opacity: 1.00,
+        }, 1000);
+
+        $("#game-img" ).animate({
+            opacity: 1.00,
+            left: "10%",
+        }, 2000);
+
+        $( "#game-text" ).animate({
+            opacity: 1.00,
+        }, 3000);
+    }
+
     // Events
     function loadPage(destination, page, callback)
     {       
@@ -43,7 +64,7 @@ loadPage("#page-content", "home", mainPageTextAnimation);
             }
     });
 }
-    $(".aboutme-page").click(function(){
+    $(".aboutme-page").click(function() {
        loadPage("#page-content", "aboutme", aboutmePageTextAnimation);
     });
 
@@ -53,16 +74,15 @@ loadPage("#page-content", "home", mainPageTextAnimation);
        });    
     });
 
-    $(".contact-page").click(function(){
-        window.location.href = "contact.html";
+    $(".projects-page").click(function() {
+        loadPage("#page-content", "projects", projectsPageTextAnimation);
     });
     
-    $(".projects-page").click(function(){
-        window.location.href = "projects.html";
+    $(".contact-page").click(function() {
+        loadPage("#page-content", "contact", contactPageTextAnimation);
     });
 
-    function enableNightMode(addSessionStorage)
-    {
+    function enableNightMode(addSessionStorage) {
         $(".container-fluid").removeClass("gradient-background").addClass("black-background");
         $(".container-fluid").addClass("text-white");
         $(".header").removeClass("lightgrey-bg");
@@ -72,8 +92,7 @@ loadPage("#page-content", "home", mainPageTextAnimation);
             localStorage.setItem("nightmode", "true");
     }
 
-    function disableNightMode(removeSessionStorage)
-    {
+    function disableNightMode(removeSessionStorage) {
         $(".container-fluid").removeClass("black-background").addClass("gradient-background");
         $(".container-fluid").removeClass("text-white");
         $(".header").addClass("lightgrey-bg");
@@ -82,6 +101,7 @@ loadPage("#page-content", "home", mainPageTextAnimation);
         if (removeSessionStorage)
             localStorage.removeItem("nightmode");
     }
+
     $("#enable-night").click(function() {
         enableNightMode(true);
     });
@@ -92,6 +112,4 @@ loadPage("#page-content", "home", mainPageTextAnimation);
 
     if (localStorage.getItem("nightmode") != null)
         enableNightMode(false);
-
-
 });
