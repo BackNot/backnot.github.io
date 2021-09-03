@@ -214,3 +214,29 @@ a {
 .menu-buttons {
     align-self: end;
 }
+
+#projects-text {
+    text-align: center;
+    grid-row: header1;
+    grid-column: header1;
+}
+
+.game-image-wrapper {
+    grid-row: left1;
+    grid-column: left1;
+}
+
+#game-text {
+    grid-row: right1;
+    grid-column: right1;
+}
+
+#projects-container {
+    display: grid;
+    row-gap: 20px;
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas: 
+    "header1 header1"
+    "left1 right1"
+}
+

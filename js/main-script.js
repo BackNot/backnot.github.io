@@ -15,7 +15,7 @@ $(document).ready(function() {
     function aboutmePageTextAnimation() {
         $("#night-img" ).animate({
             opacity: 1.00,
-            left: "0%",
+            left: "25%"
         }, 2000);
 
         $( "#aboutme-text" ).animate({
@@ -36,7 +36,7 @@ $(document).ready(function() {
 
         $("#game-img" ).animate({
             opacity: 1.00,
-            left: "10%",
+            left: "15%",
         }, 2000);
 
         $( "#game-text" ).animate({
@@ -54,8 +54,8 @@ $(document).ready(function() {
                 $(destination).html(html);
                 callback();
             }
-    });
-}
+        });
+    }
     $(".aboutme-page").click(function() {
        loadPage("#page-content", "aboutme", aboutmePageTextAnimation);
     });
@@ -73,35 +73,4 @@ $(document).ready(function() {
     $(".contact-page").click(function() {
         loadPage("#page-content", "contact", contactPageTextAnimation);
     });
-
-    function enableNightMode(addSessionStorage) {
-        $(".container-fluid").removeClass("gradient-background").addClass("black-background");
-        $(".container-fluid").addClass("text-white");
-        $(".header").removeClass("lightgrey-bg");
-        $(".black-border").addClass("white-border").removeClass("black-border");
-        $(".bottom-border").addClass("bottom-border-white").removeClass("bottom-border");
-        if (addSessionStorage)
-            localStorage.setItem("nightmode", "true");
-    }
-
-    function disableNightMode(removeSessionStorage) {
-        $(".container-fluid").removeClass("black-background").addClass("gradient-background");
-        $(".container-fluid").removeClass("text-white");
-        $(".header").addClass("lightgrey-bg");
-        $(".white-border").addClass("black-border").removeClass("white-border");
-        $(".bottom-border-white").addClass("bottom-border").removeClass("bottom-border-white");
-        if (removeSessionStorage)
-            localStorage.removeItem("nightmode");
-    }
-
-    $("#enable-night").click(function() {
-        enableNightMode(true);
-    });
-                
-    $("#disable-night").click(function() {
-        disableNightMode(true);
-    });
-
-    if (localStorage.getItem("nightmode") != null)
-        enableNightMode(false);
 });
